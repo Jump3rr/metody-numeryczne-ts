@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Interpolation } from './components/Interpolation';
+import Approximation1 from './components/Approximation1';
 
 function App() {
   const router = createBrowserRouter([
@@ -12,6 +13,10 @@ function App() {
     {
       path: '/interpolation',
       element: <Interpolation />,
+    },
+    {
+      path: '/approximation1',
+      element: <Approximation1 />,
     },
   ]);
 
