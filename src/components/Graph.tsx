@@ -10,8 +10,8 @@ interface GraphProps {
 const Graph: React.FC<GraphProps> = ({ a, b, data }) => {
   const ref = useRef<SVGSVGElement>(null);
   const margin = { top: 20, right: 20, bottom: 30, left: 50 };
-  const width = 960 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const width = 500 - margin.left - margin.right;
+  const height = 300 - margin.top - margin.bottom;
 
   useEffect(() => {
     if (ref.current) {
@@ -45,6 +45,31 @@ const Graph: React.FC<GraphProps> = ({ a, b, data }) => {
 
       svg
         .append('g')
+        .attr('class', 'grid')
+        .attr('transform', `translate(0,${height})`)
+        .style('stroke-dasharray', '3,3')
+        .call(
+          d3
+            .axisBottom(x)
+            .ticks(5)
+            .tickSize(-height)
+            .tickFormat(() => '')
+        );
+
+      svg
+        .append('g')
+        .attr('class', 'grid')
+        .style('stroke-dasharray', '3,3')
+        .call(
+          d3
+            .axisLeft(y)
+            .ticks(5)
+            .tickSize(-width)
+            .tickFormat(() => '')
+        );
+
+      svg
+        .append('g')
         .attr('transform', `translate(0,${height})`)
         .call(d3.axisBottom(x));
 
@@ -57,6 +82,20 @@ const Graph: React.FC<GraphProps> = ({ a, b, data }) => {
         .attr('stroke', 'steelblue')
         .attr('stroke-width', 1.5)
         .attr('d', line);
+
+      svg
+        .selectAll('.dot')
+        .data(data)
+        .enter()
+        .append('circle')
+        .attr('class', 'dot')
+        .attr('cx', function (d) {
+          return x(d.t);
+        })
+        .attr('cy', function (d) {
+          return y(a * Math.exp(b * d.t));
+        })
+        .attr('r', 2);
     }
   }, [a, b, data]);
 

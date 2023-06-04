@@ -6,6 +6,7 @@ import Approximation1 from './components/Approximation1';
 import Euler from './components/Euler';
 import Approximation2 from './components/Approximation2';
 import Approximation3 from './components/Approximation3';
+import RungeKutta from './components/RungeKutta';
 
 function App() {
   const router = createBrowserRouter([
@@ -32,6 +33,10 @@ function App() {
     {
       path: '/euler',
       element: <Euler />,
+    },
+    {
+      path: '/rungekutta',
+      element: <RungeKutta />,
     },
   ]);
 
