@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Interpolation } from './components/Interpolation';
 import Approximation1 from './components/Approximation1';
 import Euler from './components/Euler';
+import Approximation2 from './components/Approximation2';
 
 function App() {
   const router = createBrowserRouter([
@@ -18,6 +19,10 @@ function App() {
     {
       path: '/approximation1',
       element: <Approximation1 />,
+    },
+    {
+      path: '/approximation2',
+      element: <Approximation2 />,
     },
     {
       path: '/euler',
