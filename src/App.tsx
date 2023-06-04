@@ -5,6 +5,7 @@ import { Interpolation } from './components/Interpolation';
 import Approximation1 from './components/Approximation1';
 import Euler from './components/Euler';
 import Approximation2 from './components/Approximation2';
+import Approximation3 from './components/Approximation3';
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App() {
     {
       path: '/approximation2',
       element: <Approximation2 />,
+    },
+    {
+      path: '/approximation3',
+      element: <Approximation3 />,
     },
     {
       path: '/euler',
