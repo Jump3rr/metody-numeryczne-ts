@@ -1,48 +1,30 @@
 import React from 'react';
 import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Interpolation } from './components/Interpolation';
 import Approximation1 from './components/Approximation1';
 import Euler from './components/Euler';
 import Approximation2 from './components/Approximation2';
 import Approximation3 from './components/Approximation3';
 import RungeKutta from './components/RungeKutta';
+import NavigationBar from './components/NavBar/NavBar';
+import HomePage from './components/Home/Home';
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <div>Hello world!</div>,
-    },
-    {
-      path: '/interpolation',
-      element: <Interpolation />,
-    },
-    {
-      path: '/approximation1',
-      element: <Approximation1 />,
-    },
-    {
-      path: '/approximation2',
-      element: <Approximation2 />,
-    },
-    {
-      path: '/approximation3',
-      element: <Approximation3 />,
-    },
-    {
-      path: '/euler',
-      element: <Euler />,
-    },
-    {
-      path: '/rungekutta',
-      element: <RungeKutta />,
-    },
-  ]);
-
   return (
     <div className='App'>
-      <RouterProvider router={router} />
+      <Router>
+        <NavigationBar />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/interpolation' element={<Interpolation />} />
+          <Route path='/approximation1' element={<Approximation1 />} />
+          <Route path='/approximation2' element={<Approximation2 />} />
+          <Route path='/approximation3' element={<Approximation3 />} />
+          <Route path='/euler' element={<Euler />} />
+          <Route path='/rungekutta' element={<RungeKutta />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

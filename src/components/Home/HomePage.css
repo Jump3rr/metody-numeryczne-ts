@@ -1,0 +1,19 @@
+.home-container {
+    padding: 20px;
+}
+
+.home-row {
+    display: flex;
+}
+
+.home-column {
+    flex: 25%;
+    padding: 5px;
+    background-color: #f1f1f1;
+    margin: 10px;
+    text-align: center;
+}
+
+.home-column h2 {
+    margin-top: 0;
+}
